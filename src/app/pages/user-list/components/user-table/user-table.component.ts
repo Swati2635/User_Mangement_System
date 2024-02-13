@@ -16,6 +16,12 @@ export class UserTableComponent implements OnInit {
   @Output() update = new EventEmitter<PROFILE>();
   @Output() delete = new EventEmitter<PROFILE>();
 
+  // Pagination variables
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageSize: number = 5;
+  pageIndex: number = 0;
+
+  searchQuery: any;
   constructor(private globalData: GlobalDataService) {}
 
   ngOnInit(): void {}
@@ -31,4 +37,15 @@ export class UserTableComponent implements OnInit {
     return user?.id;
   }
 
+  // Method to handle page change event
+  onPageChange(event: any) {
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+  }
+
+  // Get a sliced portion of the user list based on pagination
+  getPaginatedUsers() {
+    const startIndex = this.pageIndex * this.pageSize;
+    return this.userList.slice(startIndex, startIndex + this.pageSize);
+  }
 }
