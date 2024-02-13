@@ -17,7 +17,7 @@ import { UserTable, UserModal, UserForm } from './user-list/components';
 //PAGES
 import { HomeComponent as HomePage } from './home/home.component';
 import { UserListComponent as UserListPage } from './user-list/user-list.component';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     PagesComponent,
@@ -38,6 +38,7 @@ import { UserListComponent as UserListPage } from './user-list/user-list.compone
     MatTooltipModule,
     SharedModule,
     PagesRoutingModule,
+    MatPaginatorModule,
   ],
 })
 export class PagesModule {}
